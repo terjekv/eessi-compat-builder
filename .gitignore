@@ -33,3 +33,7 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+# Ignore downloaded tarballs.
+*.tar
+*.tar.gz
+*.tar.bz2
