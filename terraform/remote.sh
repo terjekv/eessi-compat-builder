@@ -5,6 +5,7 @@ sudo yum -y update
 sudo yum -y upgrade
 sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 sudo yum -y install singularity
+sudo yum -y install tee
 
 (
     echo "Initalizing compat layer build for $( uname -a ) on a $( curl http://169.254.169.254/latest/meta-data/instance-type )"
