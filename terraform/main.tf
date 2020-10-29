@@ -49,6 +49,9 @@ resource "aws_instance" "compat-layer-builder-arm" {
   vpc_security_group_ids = [aws_security_group.instance.id]
   key_name = "deployer-key"
   monitoring = true
+  root_block_device {
+    volume_size = 20
+  }
 
   tags = {
     Name = "eessi-compat-arm"
