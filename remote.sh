@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This is the remote script that runs on the nodes.
+# For testing, this will be modified, see run.sh for the specifics.
+# For prod, this is run as-is.
+
 echo "Running remote.sh"
 sudo yum -y update
 sudo yum -y upgrade
