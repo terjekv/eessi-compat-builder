@@ -1,4 +1,6 @@
-# Usage
+# eessi-compat-builder
+
+How to full automate the building of the EESSI compatibility layer.
 
 ## Setup
 
