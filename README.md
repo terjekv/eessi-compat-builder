@@ -16,9 +16,7 @@ Then check out the repo:
 
 ```shell
 git clone git@github.com:terjekv/eessi-compat-builder.git
-cd eessi-compat-builder/terraform
-terraform init
-cd ..
+cd eessi-compat-builder
 ```
 
 You will want to edit the ssh keyname in `terraform/variables.tf`, unless you create your own keys
@@ -27,10 +25,18 @@ called `id_rsa.terraform`. Note that for terraform, these have to be keyless.
 ## To use
 
 ```
-./run.sh
+./run.sh [test|prod|plan]
 ```
 
-Wait for a while. When it's done, you'll have a `compat.tar.gz`-file in the current directory.
+Without input, a test will be run.
+
+Wait for a while, or if you're doing a production run, a long while.
+When the script completes, you will have files like this in the current directory:
+
+```
+compat-prod-arm-2020-10-31_07_33_16_UTC.tar.gz
+compat-prod-x86_64-2020-10-31_07_33_16_UTC.tar.gz
+```
 
 
 ## How?

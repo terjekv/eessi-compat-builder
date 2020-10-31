@@ -8,11 +8,13 @@ if [[ $# -eq 0 ]] || [[ "$1" == "test" ]] || [[ "$1" == "plan" ]]; then
     cp remote.sh terraform/remote.sh
     perl -pi -e 's|sudo yum |# sudo yum|' terraform/remote.sh
     perl -pi -e 's|.*singularity.*docker.*|    echo "Testing only..."|' terraform/remote.sh
+    MODE=test
     export TF_VAR_mode=test
 elif [[ $1 == "prod" ]]; then
-    export TF_VAR_mode=prod
     echo "Starting production, run this will take a while...'";
     cp remote.sh terraform/remote.sh
+    export TF_VAR_mode=prod
+    MODE=prod
 else
     echo "Pass either nothing, 'test', 'prod' or 'plan' to this script."
     echo "Nothing passed implies 'test'."
@@ -44,7 +46,7 @@ for HOST in $( $TF_SHOW | grep ^public_dns | awk '{print $1}' ); do
     REMOTE="$UNAME@$DNS"
     SSH="ssh -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
     echo "Fetching ${ARCH}..."
-    time $SSH $REMOTE 'tar -cf - compat | gzip -9' > ../compat-${ARCH}-${BUILDTIME_UTC}.tar.gz
+    time $SSH $REMOTE 'tar -cf - compat | gzip -9' > ../compat-${MODE}-${ARCH}-${BUILDTIME_UTC}.tar.gz
 done
 
 terraform destroy -auto-approve
