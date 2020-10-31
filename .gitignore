@@ -37,3 +37,6 @@ terraform.rc
 *.tar
 *.tar.gz
 *.tar.bz2
+
+# Ignore anything in the output directory
+output/*

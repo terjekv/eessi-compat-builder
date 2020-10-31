@@ -34,7 +34,8 @@ variable "instance_arm" {
 
   default = {
     test = "t4g.micro"
-    prod = "c6g.4xlarge"
+    prod = "c6g.xlarge"
+#    prod = "c6g.4xlarge"
   }
 }
 
@@ -43,6 +44,7 @@ variable "instance_x86_64" {
 
   default = {
     test = "t2.micro"
-    prod = "c5.4xlarge"
+    prod = "c5.xlarge"
+#    prod = "c5.4xlarge"
   }
 }
